@@ -13,17 +13,7 @@ struct multiboot_info
 
 int main(uint32_t magic, struct multiboot_info *mb_info_addr)
 {
-
-    char *hello_world = "Hello World!";
-    size_t len = strlen(hello_world);
-
-    char *video_memory = (char *)0xb8000;
-    // Write to video memory
-    for (size_t i = 0; i < len; i++)
-    {
-        video_memory[i * 2] = hello_world[i];
-        video_memory[i * 2 + 1] = 0x07;
-    }
-
+    char *hello_world = "Hello World!\n";
+    write_to_console(hello_world);
     return 0;
 }
